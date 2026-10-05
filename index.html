@@ -4,25 +4,29 @@
 <head>
     <meta charset="UTF-8">
     <title>Foodle</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <h1>🍽️ Foodle</h1>
 
-    <!-- Εδώ εμφανίζονται τα 5 clues -->
-    <div id="ingredients"></div>
+    <div class="game-container">
 
-    <!-- Εδώ θα εμφανίζονται οι προηγούμενες μαντεψιές -->
-    <h3>Προηγούμενες μαντεψιές</h3>
-    <div id="guessHistory"></div>
+        <h1>Foodle</h1>
 
-    <input id="guessInput" type="text" placeholder="Ποιο φαγητό είναι;">
+        <div id="ingredients"></div>
 
-    <div id="suggestions"></div>
+        <h3>Προηγούμενες μαντεψιές</h3>
+        <div id="guessHistory"></div>
 
-    <button id="guessButton">Μάντεψε</button>
+        <input id="guessInput" type="text" placeholder="Ποιο φαγητό είναι;">
 
-    <p id="result"></p>
+        <div id="suggestions"></div>
+
+        <button id="guessButton">Μάντεψε</button>
+
+        <p id="result"></p>
+
+    </div>
 
     <script src="script.js"></script>
 </body>
