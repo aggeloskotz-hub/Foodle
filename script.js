@@ -4,6 +4,13 @@ const result = document.getElementById("result");
 const ingredients = document.getElementById("ingredients");
 const suggestions = document.getElementById("suggestions");
 const guessHistory = document.getElementById("guessHistory");
+const originHint = document.getElementById("originHint");
+const methodHint = document.getElementById("methodHint");
+const scoreDisplay = document.getElementById("scoreDisplay");
+const skipButton = document.getElementById("skipButton");
+const giveUpButton = document.getElementById("giveUpButton");
+const originDisplay = document.getElementById("originDisplay");
+const methodDisplay = document.getElementById("methodDisplay");
 
 const dishes = [
     {
@@ -14,7 +21,9 @@ const dishes = [
             "Κανέλα",
             "Πατάτα",
             "Μπεσαμέλ"
-        ]
+        ],
+        origin: "Ελλάδα",
+        method: "Φούρνος"
     },
 
     {
@@ -25,7 +34,9 @@ const dishes = [
             "Τυρί",
             "Μπεσαμέλ",
             "Μακαρόνια"
-        ]
+        ],
+        origin: "Ελλάδα",
+        method: "Φούρνος"
     },
 
     {
@@ -36,7 +47,9 @@ const dishes = [
             "Τομάτα",
             "Μελιτζάνα",
             "Μπεσαμέλ"
-        ]
+        ],
+        origin: "Ελλάδα",
+        method: "Φούρνος"
     },
     {
         name: "Καρμπονάρα",
@@ -46,7 +59,9 @@ const dishes = [
             "Σκόρδο",
             "Αβγό",
             "Μακαρόνια"
-        ]
+        ],
+        origin: "Ιταλία",
+        method: "Εστία"
     },
     {
         name: "Γιουβαρλάκια",
@@ -56,7 +71,9 @@ const dishes = [
             "Λεμόνι",
             "Ρύζι",
             "Νερό"
-        ]
+        ],
+        origin: "Ελλάδα",
+        method: "Εστία"
     },
     {
         name: "Γιουβέτσι",
@@ -66,7 +83,9 @@ const dishes = [
             "Κρεμμύδι",
             "Κανέλα",
             "Κριθαράκι"
-        ]
+        ],
+        origin: "Ελλάδα",
+        method: "Φούρνος"
     },
     {
         name: "Μπολονέζ",
@@ -76,7 +95,9 @@ const dishes = [
             "Τομάτα",
             "Γάλα",
             "Μακαρόνια"
-        ]
+        ],
+        origin: "Ιταλία",
+        method: "Εστία"
     },
     {
         name: "Κοτόπουλο με πατάτες",
@@ -86,7 +107,9 @@ const dishes = [
             "Μουστάρδα",
             "Λάδι",
             "Κοτόπουλο"
-        ]
+        ],
+        origin: "Ελλάδα",
+        method: "Φούρνος"
     },
     {
         name: "Φασολάδα",
@@ -96,7 +119,9 @@ const dishes = [
             "Νερό",
             "Κρεμμύδι",
             "Φασόλια"
-        ]
+        ],
+        origin: "Ελλάδα",
+        method: "Εστία"
     },
     {
         name: "Φακές",
@@ -106,7 +131,9 @@ const dishes = [
             "Τομάτα",
             "Σκόρδο",
             "Φακές"
-        ]
+        ],
+        origin: "Ελλάδα",
+        method: "Εστία"
     },
     {
         name: "Ρεβυθάδα",
@@ -116,7 +143,9 @@ const dishes = [
             "Λεμόνι",
             "Κρεμμύδι",
             "Ρεβύθια"
-        ]
+        ],
+        origin: "Ελλάδα",
+        method: "Φούρνος"
     },
     {
         name: "Χούμους",
@@ -126,7 +155,9 @@ const dishes = [
             "Σκόρδο",
             "Κύμινο",
             "Ρεβύθια"
-        ]
+        ],
+        origin: "Μέση Ανατολή",
+        method: "Κρύο/Σαλάτα"
     },
     {
         name: "Μπριάμ",
@@ -136,7 +167,9 @@ const dishes = [
             "Πατάτα",
             "Κολοκυθάκι",
             "Πιπεριά"
-        ]
+        ],
+        origin: "Ελλάδα",
+        method: "Φούρνος"
     },
     {
         name: "Τουρλού",
@@ -146,7 +179,9 @@ const dishes = [
             "Πατάτα",
             "Κολοκυθάκι",
             "Πιπεριά"
-        ]
+        ],
+        origin: "Ελλάδα",
+        method: "Εστία"
     },
     {
         name: "Κοτόσουπα",
@@ -156,7 +191,9 @@ const dishes = [
             "Λεμόνι",
             "Κοτόπουλο",
             "Νερό"
-        ]
+        ],
+        origin: "Ελλάδα",
+        method: "Εστία"
     },
     {
         name: "Τηγανιά Κοτόπουλο",
@@ -166,7 +203,9 @@ const dishes = [
             "Λεμόνι",
             "Κοτόπουλο",
             "Πιπεριά"
-        ]
+        ],
+        origin: "Ελλάδα",
+        method: "Εστία"
     },
     {
         name: "Γεμιστά",
@@ -176,7 +215,9 @@ const dishes = [
             "Μαϊντανός",
             "Πιπεριά",
             "Ρύζι"
-        ]
+        ],
+        origin: "Ελλάδα",
+        method: "Φούρνος"
     },
     {
         name: "Κολοκυθάκια Γεμιστά",
@@ -186,7 +227,9 @@ const dishes = [
             "Λεμόνι",
             "Αβγό",
             "Κολοκυθάκι"
-        ]
+        ],
+        origin: "Ελλάδα",
+        method: "Φούρνος"
     },
     {
         name: "Μπακαλιάρος Σκορδαλιά",
@@ -196,7 +239,9 @@ const dishes = [
             "Λεμόνι",
             "Μπύρα",
             "Μπακαλιάρος"
-        ]
+        ],
+        origin: "Ελλάδα",
+        method: "Εστία"
     },
     {
         name: "Κολοκυθοκεφτέδες",
@@ -206,7 +251,9 @@ const dishes = [
             "Κολοκυθάκι",
             "Φέτα",
             "Αλεύρι"
-        ]
+        ],
+        origin: "Ελλάδα",
+        method: "Εστία"
     },
     {
         name: "Ριζότο Μανιταριών",
@@ -216,7 +263,9 @@ const dishes = [
             "Τυρί",
             "Μανιτάρια",
             "Κρεμμύδι"
-        ]
+        ],
+        origin: "Ιταλία",
+        method: "Εστία"
     },
     {
         name: "Κοτόπουλο Αλά Κρεμ",
@@ -226,7 +275,9 @@ const dishes = [
             "Κρέμα Γάλακτος",
             "Σκόρδο",
             "Κοτόπουλο"
-        ]
+        ],
+        origin: "Γαλλία",
+        method: "Εστία"
     },
     {
         name: "Μακαρόνια Ναπολιτάνα",
@@ -236,7 +287,9 @@ const dishes = [
             "Μακαρόνια",
             "Βασιλικός",
             "Σκόρδο"
-        ]
+        ],
+        origin: "Ιταλία",
+        method: "Εστία"
     },
     {
         name: "Ιμάμ Μπαϊλντί",
@@ -246,7 +299,9 @@ const dishes = [
             "Τομάτα",
             "Σκόρδο",
             "Φέτα"
-        ]
+        ],
+        origin: "Ελλάδα",
+        method: "Φούρνος"
     },
     {
         name: "Σπανακόρυζο",
@@ -256,7 +311,9 @@ const dishes = [
             "Λεμόνι",
             "Σκόρδο",
             "Σπανάκι"
-        ]
+        ],
+        origin: "Ελλάδα",
+        method: "Εστία"
     },
     {
         name: "Πατατοσαλάτα",
@@ -266,7 +323,9 @@ const dishes = [
             "Μαϊντανός",
             "Μαγιονέζα",
             "Φρέσκο Κρεμμύδι"
-        ]
+        ],
+        origin: "Ελλάδα",
+        method: "Κρύο/Σαλάτα"
     },
     {
         name: "Φαλάφελ",
@@ -276,7 +335,9 @@ const dishes = [
             "Κύμινο",
             "Λεμόνι",
             "Αλεύρι"
-        ]
+        ],
+        origin: "Μέση Ανατολή",
+        method: "Εστία"
     },
     {
         name: "Σπετζοφάι",
@@ -286,7 +347,9 @@ const dishes = [
             "Μπούκοβο",
             "Σκόρδο",
             "Λουκάνικο"
-        ]
+        ],
+        origin: "Ελλάδα",
+        method: "Εστία"
     },
     {
         name: "Γαριδομακαρονάδα",
@@ -296,7 +359,9 @@ const dishes = [
             "Σκόρδο",
             "Μακαρόνια",
             "Γαρίδες"
-        ]
+        ],
+        origin: "Ιταλία",
+        method: "Εστία"
     },
     {
         name: "Μακαρόνια με πέστο",
@@ -306,7 +371,9 @@ const dishes = [
             "Μακαρόνια",
             "Βασιλικός",
             "Κουκουνάρι"
-        ]
+        ],
+        origin: "Ιταλία",
+        method: "Εστία"
     },
     {
         name: "Μακαρόνια Ογκρατέν",
@@ -316,7 +383,9 @@ const dishes = [
             "Μοσχοκάρυδο",
             "Μπεσαμέλ",
             "Ζαμπόν"
-        ]
+        ],
+        origin: "Γαλλία",
+        method: "Φούρνος"
     },
     {
         name: "Σνίτσελ Κοτόπουλο",
@@ -326,7 +395,9 @@ const dishes = [
             "Αλεύρι",
             "Λάδι",
             "Φρυγανιά"
-        ]
+        ],
+        origin: "Γερμανία",
+        method: "Εστία"
     },
     {
         name: "Σνίτσελ Χοιρινό",
@@ -336,7 +407,9 @@ const dishes = [
             "Χοιρινό",
             "Λάδι",
             "Φρυγανιά"
-        ]
+        ],
+        origin: "Γερμανία",
+        method: "Εστία"
     },
     {
         name: "Χοιρινή Τηγανιά",
@@ -346,7 +419,9 @@ const dishes = [
             "Λεμόνι",
             "Σκόρδο",
             "Λάδι"
-        ]
+        ],
+        origin: "Ελλάδα",
+        method: "Εστία"
     },
     {
         name: "Χοιρινό Πρασοσέλινο",
@@ -356,7 +431,9 @@ const dishes = [
             "Σέλινο",
             "Σκόρδο",
             "Πράσο"
-        ]
+        ],
+        origin: "Ελλάδα",
+        method: "Εστία"
     },
     {
         name: "Χοιρινό Λεμονάτο",
@@ -366,7 +443,9 @@ const dishes = [
             "Λεμόνι",
             "Πατάτες",
             "Ρίγανη"
-        ]
+        ],
+        origin: "Ελλάδα",
+        method: "Εστία"
     },
     {
         name: "Πατάτες Γιαχνί",
@@ -376,7 +455,9 @@ const dishes = [
             "Κρεμμύδι",
             "Πατάτα",
             "Σκόρδο"
-        ]
+        ],
+        origin: "Ελλάδα",
+        method: "Εστία"
     },
     {
         name: "Μπατζίνα",
@@ -386,7 +467,9 @@ const dishes = [
             "Γάλα",
             "Κολοκύθα",
             "Λάδι"
-        ]
+        ],
+        origin: "Τρίκαλα",
+        method: "Φούρνος"
     },
     {
         name: "Κρεατόσουπα",
@@ -396,7 +479,9 @@ const dishes = [
             "Πατάτα",
             "Σέλινο",
             "Νερό"
-        ]
+        ],
+        origin: "Ελλάδα",
+        method: "Εστία"
     }
 
 
@@ -410,6 +495,9 @@ const dish = dishes[randomIndex];
 let currentIngredient = 0;
 let gameOver = false;
 let selectedDish = null;
+let score = 0;
+let originHintUsed = false;
+let methodHintUsed = false;
 const guesses = [];
 
 function showIngredients() {
@@ -430,6 +518,12 @@ function showIngredients() {
 }
 
 showIngredients();
+
+function updateScore() {
+    scoreDisplay.textContent = `Score: ${score}`;
+}
+
+
 
 function countCommonIngredients(dish1, dish2) {
     let common = 0;
@@ -484,12 +578,15 @@ function makeGuess() {
 
     } else {
 
-        result.textContent = "❌ Λάθος!";
 
         if (guesses.includes(guessedDish.name)) {
             result.textContent = "⚠️ Έχεις ήδη μαντέψει αυτό το πιάτο.";
             return;
         }
+
+        result.textContent = "❌ Λάθος!";
+        score++;
+        updateScore();
 
         guesses.push(guessedDish.name);
 
@@ -528,6 +625,11 @@ function endGame() {
 
     input.disabled = true;
     button.disabled = true;
+
+    originHint.disabled = true;
+    methodHint.disabled = true;
+    skipButton.disabled = true;
+    giveUpButton.disabled = true;
 }
 
 
@@ -541,6 +643,55 @@ input.addEventListener("keydown", function (event) {
     if (event.key === "Enter") {
         makeGuess();
     }
+});
+
+originHint.addEventListener("click", function () {
+
+    if (originHintUsed === false) {
+        originHintUsed = true;
+        score++;
+        updateScore();
+
+        originDisplay.textContent = `🌍 ${dish.origin}`;
+    }
+
+});
+
+methodHint.addEventListener("click", function () {
+
+    if (methodHintUsed === false) {
+        methodHintUsed = true;
+        score++;
+        updateScore();
+
+        methodDisplay.textContent = `🍳 ${dish.method}`;
+    }
+
+});
+
+skipButton.addEventListener("click", function () {
+
+    if (gameOver) {
+        return;
+    }
+
+    currentIngredient++;
+
+    if (currentIngredient < dish.ingredients.length) {
+        score++;
+        updateScore();
+        showIngredients();
+    }
+});
+
+giveUpButton.addEventListener("click", function () {
+
+    if (gameOver) {
+        return;
+    }
+
+    result.textContent = `🏳️ Η απάντηση ήταν: ${dish.name}`;
+    endGame();
 });
 
 input.addEventListener("input", function () {
